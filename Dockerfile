@@ -1,14 +1,13 @@
 FROM centos:centos7
-#LABEL version="1.0.0"
+LABEL version="1.0.0" \
+      maintainer="Yoram van de Velde <yoram@provider.nl>"
 
-MAINTAINER Yoram van de Velde <yoram@provider.nl>
 USER root
 
-# MAINTAIN IMAGE
-RUN yum -y update && yum clean all
-
-# Install needed tools
-RUN yum -y install openssl-devel libnl3-devel \
+# Update repos and install needed packages
+RUN yum -y update && \
+    yum clean all && \
+    yum -y install openssl-devel libnl3-devel \
                    net-snmp-devel libnfnetlink-devel \
                    gcc make wget rpm-build
 
