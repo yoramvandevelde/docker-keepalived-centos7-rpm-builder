@@ -4,16 +4,18 @@ LABEL version="1.0.0" \
 
 USER root
 
-# Update repos and install needed packages
+# Copy the build script
+COPY /assets/bin/start.sh /bin/start.sh
+
+# 1. Update repos and install needed packages
+# 2. Make rpmbuild directory structure
+# 3. Make /bin/start.sh executable
 RUN yum -y update && \
     yum clean all && \
     yum -y install openssl-devel libnl3-devel \
                    net-snmp-devel libnfnetlink-devel \
-                   gcc make wget rpm-build
-
-# Make directory structure rpmbuild uses and adds /data
-RUN /bin/mkdir -pv /root/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}/ /data /config
-
-# Copy the build script
-COPY /assets/bin/start.sh /bin/start.sh
-RUN chmod +x /bin/start.sh
+                   gcc make wget rpm-build && \
+    /bin/mkdir -pv /root/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}/ \
+                   /data \
+                   /config && \
+    /bin/chmod +x /bin/start.sh
