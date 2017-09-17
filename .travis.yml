@@ -8,5 +8,5 @@ install:
         - docker build -t docker-keepalived-centos7-rpm-builder .
         - docker run -d --name docker-keepalived-centos7-rpm-builder docker-keepalived-centos7-rpm-builder:latest
 script:
-        - ls data/
+        - ls data/*.rpm
 
