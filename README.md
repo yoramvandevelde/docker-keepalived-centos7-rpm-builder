@@ -1,5 +1,5 @@
 # keepalived for CentOS7 RPM builder
-
+[![Build Status](https://travis-ci.org/yoramvandevelde/docker-keepalived-centos7-rpm-builder.svg?branch=master)](https://travis-ci.org/yoramvandevelde/docker-keepalived-centos7-rpm-builder)
 Build it:
 ```
 docker build -t .
