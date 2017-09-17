@@ -6,7 +6,7 @@ services:
         - docker
 install:
         - docker build -t docker-keepalived-centos7-rpm-builder .
-              - docker run -d --name docker-keepalived-centos7-rpm-builder docker-keepalived-centos7-rpm-builder:latest
+        - docker run -d --name docker-keepalived-centos7-rpm-builder docker-keepalived-centos7-rpm-builder:latest
 script:
         - ls data/
 
