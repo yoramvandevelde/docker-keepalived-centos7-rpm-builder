@@ -1,11 +1,10 @@
 ---
 language: python
 python:
-        - 2.7
+    - 2.7
 services:
-        - docker
+    - docker
 install:
-        - docker build -t docker-keepalived-centos7-rpm-builder .
+    - docker build -t keepalived-centos7-rpm-builder .
 script:
-        - docker run -d --name docker-keepalived-centos7-rpm-builder docker-keepalived-centos7-rpm-builder:latest
-
+    - docker run -ti --rm -v $PWD/data:/data -v $PWD/assets/config:/config keepalived-centos7-rpm-builder start.sh
